@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """ This script shows a basic python program
 that shows information relative to a plant """
 

@@ -14,11 +14,11 @@ class Plant:
 
     def grow(self, amount: int = 1) -> None:
         """grow the plant 1cm at a time"""
-        self.height += 1
+        self.height += amount
 
     def age(self, days: int = 1) -> None:
         """age the plant day by day"""
-        self.current_age += 1
+        self.current_age += days
 
     def get_info(self) -> str:
         """get info of the status of the plant"""

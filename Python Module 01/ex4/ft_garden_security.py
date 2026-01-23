@@ -1,7 +1,5 @@
 class SecurePlant:
-    """
-    class that defines a plant
-    """
+    """class that defines a plant"""
     def __init__(self, name: str, height: int, age: int) -> None:
         """initialize a plant with name, heigth, age"""
         self._name = name
@@ -10,14 +8,17 @@ class SecurePlant:
 
     @property
     def name(self) -> str:
+        """return the plant's name"""
         return self._name
 
     @property
     def height(self) -> int:
+        """return the height of the plant"""
         return self._height
 
     @height.setter
     def height(self, value: int) -> None:
+        """set the plant's height with security validation"""
         if value < 0:
             print(f"Invalid operation attempted: height {value} [REJECTED]")
             print("Security: Negative height rejected")
@@ -27,10 +28,12 @@ class SecurePlant:
 
     @property
     def age(self) -> int:
+        """return the current age"""
         return self._age
 
     @age.setter
     def age(self, value: int) -> None:
+        """set the plant's age with security validation"""
         if value < 0:
             print(f"Invalid operation attempted: age {value} [REJECTED]")
             print("Security: Negative age rejected")
