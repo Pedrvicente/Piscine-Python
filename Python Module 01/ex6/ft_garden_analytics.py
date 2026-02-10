@@ -124,8 +124,8 @@ class GardenManager:
     def get_stats(cls) -> str:
         """return a string with scores and total gardens"""
         scores = []
-        for g in cls.all_gardens:
-            scores.append(f"{g.owner}: {g.get_score()}")
+        for garden in cls.all_gardens:
+            scores.append(f"{garden.owner}: {garden.get_score()}")
         score_line = ", ".join(scores)
         return (f"Height validation test: {cls.validate_height()}\n"
                 f"Garden scores - {score_line}\n"
@@ -146,9 +146,10 @@ if __name__ == "__main__":
     alice.add_plant(sunflower)
 
     old_pine = Plant("Old Pine", 80)
+    bob.add_plant(old_pine)
     print()
     alice.grow_all()
     print()
-    alice.get_report()
+    bob.get_report()
 
     print(GardenManager.get_stats())
