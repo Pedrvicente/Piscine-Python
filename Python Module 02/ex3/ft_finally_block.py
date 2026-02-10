@@ -14,7 +14,7 @@ def water_plants(plant_list: list) -> None:
         print("Closing watering system (cleanup)")
 
 
-def test_water_plants() -> None:
+def test_watering_system() -> None:
     print("=== Garden Watering System ===\n")
 
     print("Testing normal watering...")
@@ -29,4 +29,4 @@ def test_water_plants() -> None:
 
 
 if __name__ == "__main__":
-    test_water_plants()
+    test_watering_system()

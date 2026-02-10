@@ -62,7 +62,7 @@ def test_garden_management() -> None:
     except PlantError as e:
         print(f"Error adding plant: {e}")
     print()
-    print("Watering plants...")
+    print("Watering platest_water_plantsnts...")
     garden.water_plants()
     print()
     print("Checking plant health...")
