@@ -1,6 +1,7 @@
 import sys
 
-if __name__ == '__main__':
+
+def run_inventory_system() -> None:
     print("=== Inventory System Analysis ===")
 
     inventory = {}
@@ -68,3 +69,7 @@ if __name__ == '__main__':
     values = list(inventory.values())
     print(f"Dictionary values: {values}")
     print(f"Sample lookup - 'sword' in inventory: {'sword' in inventory}")
+
+
+if __name__ == '__main__':
+    run_inventory_system()

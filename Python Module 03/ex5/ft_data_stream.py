@@ -1,62 +1,48 @@
-import time
+from typing import Generator, Any
 
 
-def generator(num_events):
+def generator(num_events: int) -> Generator[dict[str, Any], None, None]:
     players = ['alice', 'bob', 'charlie']
     actions = ['killed monster', 'leveled up', 'found treasure']
 
     for i in range(num_events):
+        player = players[hash((i, 'player')) % len(players)]
+        action = actions[hash((i, 'action')) % len(actions)]
+        level = (hash((i, 'level')) % 20) + 1
 
-        h_player = hash((i, 'player'))
-        h_level = hash((i, 'level'))
-        h_action = hash((i, 'action'))
-
-        player = players[h_player % len(players)]
-        action = actions[h_action % len(actions)]
-        level = (h_level % 20) + 1
-
-        event = {
+        yield {
             'id': i + 1,
             'player': player,
             'level': level,
             'action': action
         }
-        yield event
 
 
-def high_level(events):
+def high_level(
+    events: Generator[dict[str, Any], None, None]
+) -> Generator[dict[str, Any], None, None]:
     for event in events:
         if event['level'] > 10:
             yield event
 
 
-def fibonacci():
+def fibonacci() -> Generator[int, None, None]:
     a, b = 0, 1
     while True:
         yield a
         a, b = b, a + b
 
 
-def is_prime(n):
-    """Check if a number is prime"""
+def is_prime(n: int) -> bool:
     if n < 2:
         return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-
-    i = 3
-    while i * i <= n:
+    for i in range(2, int(n**0.5) + 1):
         if n % i == 0:
             return False
-        i += 2
-
     return True
 
 
-def primes():
-    """Generate prime numbers infinitely"""
+def primes() -> Generator[int, None, None]:
     n = 2
     while True:
         if is_prime(n):
@@ -64,58 +50,45 @@ def primes():
         n += 1
 
 
-if __name__ == '__main__':
+def main() -> None:
     print(" === Game Data Stream Processor ===\n")
     print("Processing 1000 game events...")
 
     gen = generator(1000)
-    total_count = 0
-    high_level_count = 0
-    treasure_count = 0
-    levelup_count = 0
+    counts = {'total': 0, 'high': 0, 'treasure': 0, 'levelup': 0}
     shown = 0
-    start_time = time.time()
+
     for event in gen:
-        total_count += 1
-
+        counts['total'] += 1
         if event['level'] > 10:
-            high_level_count += 1
-
+            counts['high'] += 1
         if event['action'] == 'found treasure':
-            treasure_count += 1
-
+            counts['treasure'] += 1
         if event['action'] == 'leveled up':
-            levelup_count += 1
+            counts['levelup'] += 1
 
         if shown < 3:
-            print(f"Event {event['id']}: Player {event['player']} "
-                  f"(level {event['level']}) {event['action']}")
+            msg = (f"Event {event['id']}: Player {event['player']} "
+                   f"(level {event['level']}) {event['action']}")
+            print(msg)
             shown += 1
-    print("...")
 
-    print()
+    print("...\n\n=== Stream Analytics ===")
+    print(f"Total events processed: {counts['total']}")
+    print(f"High-level players (10+): {counts['high']}")
+    print(f"Treasure events: {counts['treasure']}")
+    print(f"Level-up events: {counts['levelup']}")
+    print("\nMemory usage: Constant (streaming)")
 
-    print("=== Stream Analytics ===")
-    print(f"Total events processed: {total_count}")
-    print(f"High-level players (10+): {high_level_count}")
-    print(f"Treasure events: {treasure_count}")
-    print(f"Level-up events: {levelup_count}")
-
-    print()
-    print("Memory usage: Constant (streaming)")
-    end_time = time.time()
-    total_time = end_time - start_time
-    print(f"Processing time: {total_time:.4f} seconds")
-
-    print()
-    print("=== Generator Demonstration ===")
+    print("\n=== Generator Demonstration ===")
     fib = fibonacci()
-    fib_list = []
-    for i in range(10):
-        fib_list.append(next(fib))
-    print(f"Fibonacci sequence (first 10): {', '.join(map(str, fib_list))}")
+    fib_list = [next(fib) for _ in range(10)]
+    print(f"Fibonacci (10): {', '.join(map(str, fib_list))}")
+
     prime_gen = primes()
-    prime_list = []
-    for i in range(5):
-        prime_list.append(next(prime_gen))
-    print(f"Prime numbers (first 5): {', '.join(map(str, prime_list))}")
+    prime_list = [next(prime_gen) for _ in range(5)]
+    print(f"Primes (5): {', '.join(map(str, prime_list))}")
+
+
+if __name__ == '__main__':
+    main()

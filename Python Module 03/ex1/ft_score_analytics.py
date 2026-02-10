@@ -8,7 +8,7 @@ if __name__ == '__main__':
                 "<score1> <score2> ..."
         )
     elif len(sys.argv) > 1:
-        scores = []
+        scores = list[int]
         for arg in sys.argv[1:]:
             try:
                 scores.append(int(arg))

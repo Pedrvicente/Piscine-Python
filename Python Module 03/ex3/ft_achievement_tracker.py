@@ -1,34 +1,42 @@
-if __name__ == '__main__':
+def main() -> None:
+    """Gere as conquistas usando sets com type hints."""
     print("=== Achievement Tracker System ===\n")
 
-    alice = ({'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'})
+    alice: set[str] = {
+        'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'
+    }
+    bob: set[str] = {
+        'first_kill', 'level_10', 'boss_slayer', 'collector'
+    }
+    charlie: set[str] = {
+        'level_10', 'treasure_hunter', 'boss_slayer', 'speed_demon',
+        'perfectionist'
+    }
+
     print(f"Player alice achievements: {alice}")
-
-    bob = ({'first_kill', 'level_10', 'boss_slayer', 'collector'})
     print(f"Player bob achievements: {bob}")
-
-    charlie = ({'level_10', 'treasure_hunter', 'boss_slayer', 'speed_demon',
-                'perfectionist'})
     print(f"Player charlie achievements: {charlie}\n")
 
     print("=== Achievement Analytics ===\n")
 
-    unique = alice.union(bob).union(charlie)
+    unique: set[str] = alice | bob | charlie
     print(f"All unique achievements: {unique}")
     print(f"Total unique achievements: {len(unique)}\n")
 
-    common = alice.intersection(bob).intersection(charlie)
-    print(f"Common to all players: {common}")
+    common: set[str] = alice & bob & charlie
+    print(f"Common to all players: {common}\n")
 
-    alice_only = alice - bob - charlie
-    bob_only = bob - alice - charlie
-    charlie_only = charlie - bob - alice
-    rare = alice_only | bob_only | charlie_only
+    rare: set[str] = (
+        (alice - bob - charlie) |
+        (bob - alice - charlie) |
+        (charlie - bob - alice)
+    )
     print(f"Rare achievements (1 player): {rare}\n")
 
-    alice_bob = alice.intersection(bob)
-    print(f"Alice vs Bob common: {alice_bob}")
-    alice_unique = alice - bob
-    print(f"Alice unique: {alice_unique}")
-    bob_unique = bob - alice
-    print(f"Bob unique: {bob_unique}")
+    print(f"Alice vs Bob common: {alice & bob}")
+    print(f"Alice unique: {alice - bob}")
+    print(f"Bob unique: {bob - alice}")
+
+
+if __name__ == '__main__':
+    main()
