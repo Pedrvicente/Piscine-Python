@@ -1,7 +1,7 @@
 import sys
 
 
-if __name__ == '__main__':
+def stream_test() -> None:
     print("=== CYBER ARCHIVES - COMMUNICATION SYSTEM ===\n")
 
     archivist_id = input("Input Stream active. Enter archivist ID: ")
@@ -16,3 +16,7 @@ if __name__ == '__main__':
     sys.stdout.write("[STANDARD] Data transmission complete\n")
     print()
     sys.stdout.write("Three-channel communication test successful.")
+
+
+if __name__ == '__main__':
+    stream_test()

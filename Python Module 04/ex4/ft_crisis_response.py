@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+def crisis() -> None:
     print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===\n")
 
     print("CRISIS ALERT: Attempting access to 'lost_archive.txt'...")
@@ -30,3 +30,7 @@ if __name__ == '__main__':
         print("STATUS: Normal operations resumed")
     print()
     print("All crisis scenarios handled successfully. Archives secure.")
+
+
+if __name__ == '__main__':
+    crisis()

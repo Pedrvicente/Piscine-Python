@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+def vault_security() -> None:
     print("=== CYBER ARCHIVES - VAULT SECURITY SYSTEM ===\n")
     print("Initiating secure vault access...")
     print("Vault connection established with failsafe protocols")
@@ -13,3 +13,7 @@ if __name__ == '__main__':
     print("[CLASSIFIED] New security protocols archived")
     print("Vault automatically sealed upon completion\n")
     print("All vault operations completed with maximum security.")
+
+
+if __name__ == '__main__':
+    vault_security()

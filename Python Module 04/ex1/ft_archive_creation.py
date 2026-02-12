@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+def archive_creation() -> None:
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
 
     print("Initializing new storage unit: new_discovery.txt")
@@ -20,3 +20,7 @@ if __name__ == '__main__':
 
     print("Data inscription complete. Storage unit sealed.")
     print("Archive 'new_discovery.txt' ready for long-term preservation.")
+
+
+if __name__ == '__main__':
+    archive_creation()

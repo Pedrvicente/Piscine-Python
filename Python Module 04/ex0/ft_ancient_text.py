@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+def recover_data() -> None:
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
     print()
     print("Accessing Storage Vault: ancient_fragment.txt")
@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
         content = file.read()
 
-        file.close
+        file.close()
 
         print("Connection established...")
         print()
@@ -17,3 +17,7 @@ if __name__ == '__main__':
         print("Data recovery complete. Storage unit disconnected.")
     except FileNotFoundError:
         print("ERROR: Storage vault not found. Run data generator first.")
+
+
+if __name__ == '__main__':
+    recover_data()
