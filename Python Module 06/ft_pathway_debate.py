@@ -1,11 +1,9 @@
-import alchemy
-import alchemy.elements
 import alchemy.transmutation
 from alchemy.transmutation import lead_to_gold, stone_to_gem
 
 
 def main() -> None:
-    print("=== Pathway Debate Mastery ===\n")
+    print("\n=== Pathway Debate Mastery ===\n")
     print("Testing Absolute Imports (from basic.py):")
 
     print(f"lead_to_gold(): {lead_to_gold()}")
@@ -26,14 +24,23 @@ def main() -> None:
     print()
 
     print("Testing Package Access:")
-    print(
-        "alchemy.transmutation.lead_to_gold(): "
-        f"{alchemy.transmutation.lead_to_gold()}"
-    )
-    print(
-        "alchemy.transmutation.lead_to_gold(): "
-        f"{alchemy.transmutation.philosophers_stone()}"
-    )
+    try:
+        print(
+            "alchemy.transmutation.lead_to_gold(): "
+            f"{alchemy.transmutation.lead_to_gold()}"
+        )
+    except AttributeError as e:
+        print(f"alchemy.transmutation.lead_to_gold(): AttributeError - {e}")
+
+    try:
+        print(
+            "alchemy.transmutation.philosophers_stone(): "
+            f"{alchemy.transmutation.philosophers_stone()}"
+        )
+    except AttributeError as e:
+        print(
+            f"alchemy.transmutation.philosophers_stone(): AttributeError - {e}"
+            )
 
     print()
 

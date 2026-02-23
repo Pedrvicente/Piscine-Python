@@ -1,41 +1,42 @@
-import alchemy
-import alchemy.grimoire  # noqa: F401
-from alchemy.grimoire import validate_ingredients
-from alchemy.grimoire import record_spell
+from alchemy.grimoire import validate_ingredients, record_spell
 
 
 def main() -> None:
-    print("=== Circular Curse Breaking ===\n")
+    print("\n=== Circular Curse Breaking ===\n")
+
     print("Testing ingredient validation:")
     print(
-        f'validate_ingredients("fire air"): '
+        'validate_ingredients("fire air"): '
         f'{validate_ingredients("fire air")}'
     )
     print(
-        f'validate_ingredients("dragon scales"): '
+        'validate_ingredients("dragon scales"): '
         f'{validate_ingredients("dragon scales")}'
     )
-
     print()
 
     print("Testing spell recording with validation:")
-    print(
-        f'record_spell("Fireball", "fire air"): '
-        f'{record_spell("Fireball", "fire air")}'
-    )
-    print(
-        f'record_spell("Dark magic", "shadow"): '
-        f'{record_spell("Dark magic", "shadow")}'
-    )
-
+    try:
+        print(
+            'record_spell("Fireball", "fire air"): '
+            f'{record_spell("Fireball", "fire air")}'
+        )
+        print(
+            'record_spell("Dark Magic", "shadow"): '
+            f'{record_spell("Dark Magic", "shadow")}'
+        )
+    except Exception as e:
+        print(f"Error recording spells: {e}")
     print()
 
     print("Testing late import technique:")
-    print(
-        f'record_spell("Lightning", "air"): '
-        f'{record_spell("Lightning", "air")}'
-    )
-
+    try:
+        print(
+            'record_spell("Lightning", "air"): '
+            f'{record_spell("Lightning", "air")}'
+        )
+    except Exception as e:
+        print(f"Error in late import: {e}")
     print()
 
     print("Circular dependency curse avoided using late imports!")

@@ -10,4 +10,4 @@ def philosophers_stone() -> str:
 
 
 def elixir_of_life() -> str:
-    return "Exilir of life: eternal youth achieved!"
+    return "Elixir of life: eternal youth achieved!"
