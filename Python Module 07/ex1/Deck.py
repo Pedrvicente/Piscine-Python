@@ -34,9 +34,10 @@ class Deck:
         artifact = sum(
             1 for card in self.cards if isinstance(card, ArtifactCard))
 
-        for card in self.cards:
-            total = sum(card.cost for card in self.cards)
-        average = total / len(self.cards)
+        total = sum(card.cost for card in self.cards)
+        average = (
+            float(f"{total / len(self.cards):.2f}") if self.cards else 0.0
+        )
 
         return {
             'total_cards': len(self.cards),

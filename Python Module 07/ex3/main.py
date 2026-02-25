@@ -1,6 +1,6 @@
 from ex3.GameEngine import GameEngine
 from ex3.FantasyCardFactory import FantasyCardFactory
-from ex3.AgressiveStrategy import AggressiveStrategy
+from ex3.AggressiveStrategy import AggressiveStrategy
 
 
 def main() -> None:
@@ -19,7 +19,7 @@ def main() -> None:
 
     print()
 
-    print("Simulating agressive turn...")
+    print("Simulating aggressive turn...")
 
     result = engine.simulate_turn()
     hand_info = [f"{card.name} ({card.cost})" for card in result['hand']]

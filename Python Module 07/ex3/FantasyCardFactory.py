@@ -1,6 +1,6 @@
 import random
 
-from ex0.Card import Card
+from ex0.Card import Card, Rarity
 from ex0.CreatureCard import CreatureCard
 from ex1.SpellCard import SpellCard
 from ex1.ArtifactCard import ArtifactCard
@@ -13,7 +13,11 @@ class FantasyCardFactory(CardFactory):
         self, name_or_power: str | int | None = None
     ) -> Card:
         creatures = ["Fire Dragon", "Goblin Warrior", "Ice Giant"]
-        rarities = ["Common", "Rare", "Epic", "Legendary"]
+        rarities = [Rarity.LEGENDARY,
+                    Rarity.COMMON,
+                    Rarity.RARE,
+                    Rarity.UNCOMMON,
+                    Rarity.EPIC]
 
         if isinstance(name_or_power, str):
             return CreatureCard(
@@ -41,7 +45,11 @@ class FantasyCardFactory(CardFactory):
     ) -> Card:
         spells = ["Fireball", "Ice Bolt", "Lightning Strike"]
         effect_types = ["damage", "heal", "buff", "debuff"]
-        rarities = ["Common", "Rare", "Epic", "Legendary"]
+        rarities = [Rarity.LEGENDARY,
+                    Rarity.COMMON,
+                    Rarity.RARE,
+                    Rarity.UNCOMMON,
+                    Rarity.EPIC]
 
         if isinstance(name_or_power, str):
             return SpellCard(
@@ -72,7 +80,11 @@ class FantasyCardFactory(CardFactory):
                    "Card draw",
                    "Cost reduction",
                    "Regeneration"]
-        rarities = ["Common", "Rare", "Epic", "Legendary"]
+        rarities = [Rarity.LEGENDARY,
+                    Rarity.COMMON,
+                    Rarity.RARE,
+                    Rarity.UNCOMMON,
+                    Rarity.EPIC]
 
         if isinstance(name_or_power, str):
             return ArtifactCard(name_or_power, random.randint(1, 5),

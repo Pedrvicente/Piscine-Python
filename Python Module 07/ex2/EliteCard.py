@@ -1,4 +1,4 @@
-from ex0.Card import Card
+from ex0.Card import Card, Rarity
 from ex2.Combatable import Combatable
 from ex2.Magical import Magical
 
@@ -6,7 +6,7 @@ from ex2.Magical import Magical
 class EliteCard(Card, Combatable, Magical):
     def __init__(self, name: str,
                  cost: int,
-                 rarity: str,
+                 rarity: Rarity,
                  attack: int,
                  health: int,
                  mana: int):
@@ -31,7 +31,7 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def defend(self, incoming_damage: int) -> dict:
-        damage_blocked = min(self.health, incoming_damage)
+        damage_blocked = incoming_damage // 2
         damage_taken = incoming_damage - damage_blocked
         return {
             'defender': self.name,
@@ -40,7 +40,7 @@ class EliteCard(Card, Combatable, Magical):
             'still_alive': self.health > damage_taken
         }
 
-    def get_combat_stats(self):
+    def get_combat_stats(self) -> dict:
         return {
             'attack': self.attack_power,
             'health': self.health

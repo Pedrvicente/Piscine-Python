@@ -1,9 +1,10 @@
 from ex0.Card import Card
+from ex0.Card import Rarity
 
 
 class CreatureCard(Card):
     def __init__(self, name: str, cost: int,
-                 rarity: str, attack: int,
+                 rarity: Rarity, attack: int,
                  health: int):
         super().__init__(name, cost, rarity)
         if attack > 0 and health > 0:
@@ -31,7 +32,7 @@ class CreatureCard(Card):
         return {
             'name': self.name,
             'cost': self.cost,
-            'rarity': self.rarity,
+            'rarity': self.rarity.value,
             'type': 'Creature',
             'attack': self.attack,
             'health': self.health

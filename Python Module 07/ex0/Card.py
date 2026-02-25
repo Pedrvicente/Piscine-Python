@@ -1,8 +1,17 @@
 from abc import ABC, abstractmethod
+from enum import Enum
+
+
+class Rarity(Enum):
+    COMMON = "Common"
+    UNCOMMON = "Uncommon"
+    RARE = "Rare"
+    LEGENDARY = "Legendary"
+    EPIC = 'Epic'
 
 
 class Card(ABC):
-    def __init__(self, name: str, cost: int, rarity: str) -> None:
+    def __init__(self, name: str, cost: int, rarity: Rarity) -> None:
         self.name = name
         self.cost = cost
         self.rarity = rarity
@@ -15,7 +24,7 @@ class Card(ABC):
         return {
             'name': self.name,
             'cost': self.cost,
-            'rarity': self.rarity
+            'rarity': self.rarity.value
         }
 
     def is_playable(self, available_mana: int) -> bool:

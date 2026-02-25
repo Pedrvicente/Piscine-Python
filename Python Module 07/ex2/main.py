@@ -1,4 +1,5 @@
 from ex2.EliteCard import EliteCard
+from ex0.Card import Rarity
 
 
 def main() -> None:
@@ -18,10 +19,10 @@ def main() -> None:
 
     print("Playing Arcane Warrior (Elite Card):\n")
 
-    new_card = EliteCard("Arcane Warrior", 5, "spell", 5, 6, 4)
+    new_card = EliteCard("Arcane Warrior", 5, Rarity.RARE, 5, 6, 4)
     print("Combat phase:")
     print(f"Attack result: {new_card.attack('Enemy')}")
-    print(f"Defend result: {new_card.defend(4)}")
+    print(f"Defense result: {new_card.defend(4)}")
 
     print()
 

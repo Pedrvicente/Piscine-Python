@@ -1,11 +1,11 @@
-from ex0.Card import Card
+from ex0.Card import Card, Rarity
 
 
 class ArtifactCard(Card):
     def __init__(
             self, name: str,
             cost: int,
-            rarity: str,
+            rarity: Rarity,
             durability: int,
             effect: str):
         super().__init__(name, cost, rarity)
@@ -16,7 +16,7 @@ class ArtifactCard(Card):
         return {
             'card_played': self.name,
             'mana_used': self.cost,
-            'effect': self.effect
+            'effect': f'Permanent: {self.effect}'
         }
 
     def activate_ability(self) -> dict:

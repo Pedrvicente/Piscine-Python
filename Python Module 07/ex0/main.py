@@ -1,12 +1,13 @@
 from ex0.CreatureCard import CreatureCard
+from ex0.Card import Rarity
 
 
 def main() -> None:
-    print("=== DataDeck Card Foundation ===\n")
+    print("\n=== DataDeck Card Foundation ===\n")
     print("Testing Abstract Base Class Design:\n")
 
     print("CreatureCard Info:")
-    dragon = CreatureCard("Fire Dragon", 5, "Legendary", 7, 5)
+    dragon = CreatureCard("Fire Dragon", 5, Rarity.LEGENDARY, 7, 5)
     print(dragon.get_card_info())
 
     print()

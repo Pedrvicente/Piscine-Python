@@ -2,7 +2,7 @@ from ex3.GameStrategy import GameStrategy
 
 
 class AggressiveStrategy(GameStrategy):
-    def execute_turn(self, hand: list, battlefield: list):
+    def execute_turn(self, hand: list, battlefield: list) -> dict:
         sorted_hand = sorted(hand, key=lambda c: c.cost)
         cards_played = []
         mana_used = 0
@@ -26,7 +26,7 @@ class AggressiveStrategy(GameStrategy):
 
     def prioritize_targets(self, available_targets: list) -> list:
         prioritize = []
-        for target in prioritize:
+        for target in available_targets:
             if target == 'Enemy Player':
                 prioritize.insert(0, target)
             else:

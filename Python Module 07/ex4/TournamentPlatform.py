@@ -48,14 +48,14 @@ class TournamentPlatform:
             key=lambda c: c[1].rating,
             reverse=True
         )
-        leaderbord = []
-        for card_id, card in sorted_list:
-            leaderbord.append({
+        leaderboard = []
+        for _, card in sorted_list:
+            leaderboard.append({
                 'name': card.name,
                 'rating': card.rating,
                 'record': f"{card.wins}-{card.losses}"
             })
-        return leaderbord
+        return leaderboard
 
     def generate_tournament_report(self) -> dict:
         total = sum(card.rating for card in self.cards.values())

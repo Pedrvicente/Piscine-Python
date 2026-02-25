@@ -1,5 +1,6 @@
 from ex4.TournamentPlatform import TournamentPlatform
 from ex4.TournamentCard import TournamentCard
+from ex0.Card import Rarity
 
 
 def main() -> None:
@@ -8,14 +9,14 @@ def main() -> None:
     new_tour = TournamentPlatform()
 
     cards = [
-        TournamentCard("Fire Dragon", 5, "adeus", 5, 5),
-        TournamentCard("Ice Wizard", 5, "adeus", 5, 5)
+        TournamentCard("Fire Dragon", 5, Rarity.LEGENDARY, 5, 5),
+        TournamentCard("Ice Wizard", 5, Rarity.COMMON, 5, 5)
     ]
 
     for card in cards:
-        id = new_tour.register_card(card)
+        card_id = new_tour.register_card(card)
         stats = card.get_tournament_stats()
-        print(f"{card.name} (ID: {id})")
+        print(f"{card.name} (ID: {card_id})")
         print(f"- Interfaces: {stats['Interfaces']}")
         print(f"- Rating: {stats['Rating']}")
         print(f"- Record: {stats['Record']}")

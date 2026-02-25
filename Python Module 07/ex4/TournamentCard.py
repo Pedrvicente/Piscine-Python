@@ -1,4 +1,4 @@
-from ex0.Card import Card
+from ex0.Card import Card, Rarity
 from ex2.Combatable import Combatable
 from ex4.Rankable import Rankable
 
@@ -6,7 +6,7 @@ from ex4.Rankable import Rankable
 class TournamentCard(Card, Combatable, Rankable):
     def __init__(self, name: str,
                  cost: int,
-                 rarity: str,
+                 rarity: Rarity,
                  attack: int,
                  health: int):
         super().__init__(name, cost, rarity)
@@ -32,7 +32,7 @@ class TournamentCard(Card, Combatable, Rankable):
         }
 
     def defend(self, incoming_damage: int) -> dict:
-        damage_blocked = min(self.health, incoming_damage)
+        damage_blocked = incoming_damage // 2
         damage_taken = incoming_damage - damage_blocked
         return {
             'defender': self.name,
@@ -41,15 +41,14 @@ class TournamentCard(Card, Combatable, Rankable):
             'still_alive': self.health > damage_taken
         }
 
-    def get_combat_stats(self):
+    def get_combat_stats(self) -> dict:
         return {
             'attack': self.attack_power,
             'health': self.health
         }
 
     def calculate_rating(self) -> int:
-        rating = self.rating + (self.wins * 16) - (self.losses * 16)
-        return rating
+        return self.rating
 
     def update_wins(self, wins: int) -> None:
         self.wins = self.wins + wins

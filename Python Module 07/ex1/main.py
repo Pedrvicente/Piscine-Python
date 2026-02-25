@@ -2,6 +2,7 @@ from ex1.Deck import Deck
 from ex1.ArtifactCard import ArtifactCard
 from ex1.SpellCard import SpellCard
 from ex0.CreatureCard import CreatureCard
+from ex0.Card import Rarity
 
 
 def main() -> None:
@@ -10,10 +11,10 @@ def main() -> None:
 
     new_deck = Deck()
     cards = [
-        CreatureCard("Fire Dragon", 5, "Legendary", 7, 5),
-        ArtifactCard("Mana Crystal", 2, "effect", 3, "+1 mana per turn"),
+        CreatureCard("Fire Dragon", 5, Rarity.LEGENDARY, 7, 5),
+        ArtifactCard("Mana Crystal", 2, Rarity.COMMON, 3, "+1 mana per turn"),
         SpellCard("Lightning Bolt", 3,
-                  "Deal 3 damage to target",
+                  Rarity.COMMON,
                   "Deal 3 damage to target")
     ]
 
