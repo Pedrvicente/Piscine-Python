@@ -100,7 +100,7 @@ def main() -> None:
     print(f'ID: {mission.mission_id}')
     print(f'Destination: {mission.destination}')
     print(f'Duration: {mission.duration_days} days')
-    print(f'Budget: {mission.budget_millions}')
+    print(f'Budget: {mission.budget_millions}M')
     print(f'Crew size: {len(mission.crew)}')
     print('Crew members:')
     for member in mission.crew:
@@ -111,6 +111,7 @@ def main() -> None:
     print()
 
     print('=========================================')
+    print('Expected validation error:')
 
     try:
         pedro = CrewMember(
@@ -150,7 +151,6 @@ def main() -> None:
             mission_status='planned',
             budget_millions=2500.0)
     except ValidationError as e:
-        print('Expected validation error:')
         for error in e.errors():
             print(error['msg'])
 

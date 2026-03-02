@@ -69,8 +69,8 @@ def main() -> None:
     print()
 
     print('======================================')
+    print('Expected validation error:')
     try:
-        print('Expected validation error:')
         AlienContact(contact_id='AC_2024_001',
                      timestamp=datetime.datetime.fromisoformat(
                          '2024-01-15T10:30:00'),

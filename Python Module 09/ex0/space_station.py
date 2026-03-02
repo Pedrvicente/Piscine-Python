@@ -27,7 +27,7 @@ def main() -> None:
                            is_operational=True)
 
     print("Valid station created:")
-    print(f"Id: {station.station_id}")
+    print(f"ID: {station.station_id}")
     print(f"Name: {station.name}")
     print(f"Crew: {station.crew_size} people")
     print(f"Power: {station.power_level}%")
